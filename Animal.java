@@ -1,9 +1,14 @@
 import java.util.Date;
 
 public class Animal {
+
     private static int numOfAnimals = 0;
 
-    // Animal Attributes.
+    //create a getter
+    //what type of method is this? is it static and belongs to a class or
+    //is this method used with objects.
+
+    // animal attributes
     private String animalID;
     private String animalName;
     private Date animalBirthDate;
@@ -12,12 +17,18 @@ public class Animal {
     private float animalWeight;
     private String arrivingFrom;
 
-    // Animal Getters and Setters
-    public String getAnimalID() {
+    //getters and setters
+    public String getAnimalID(){
         return animalID;
     }
+
     public void setAnimalID(String animalID) {
         this.animalID = animalID;
+    }
+
+    //constructor
+    public static int getNumOfAnimals() {
+            return numOfAnimals;
     }
     public String getAnimalName() {
         return animalName;
@@ -55,21 +66,8 @@ public class Animal {
     public void setArrivingFrom(String arrivingFrom) {
         this.arrivingFrom = arrivingFrom;
     }
-    // Create a getter.
-    // What type of method is this? Is it static and belongs to a class or...
-    // is this method used with objects.
-
-    public int getNumOfAnimals() {
-        return numOfAnimals;
-    }
-
-
-    // Constructor
-    public Animal() {
-        System.out.println("\n A new animal was created!");
+    public Animal(){
+        System.out.println("\n A new animal was created.");
         numOfAnimals++;
     }
-
-
-
 }

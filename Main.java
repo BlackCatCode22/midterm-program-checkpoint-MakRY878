@@ -1,79 +1,58 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-
-// Main.java
-// Driver class for the Zoo program
-// dH
-// 9/26/23
-
-// updated Oct 5, 2023
-
+//updated 9/28
 
 public class Main {
 
     // Creating the genUniqueID method
-    private static String genUniqueID(String theSpecies, int numOfSpecies) {
+
+    private static String genUniqueID(String theSpecies, int numOfSpecies){
         String prefix = "";
         int suffix = numOfSpecies + 1;
-
-
-        if (theSpecies.contains("hyena")) {
+        if(theSpecies.contains("hyena")){
             prefix = "Hy";
         }
-
         return prefix + Integer.valueOf(suffix);
 
-    }
 
+    }
 
     public static void main(String[] args) {
 
-        // Load all species classes with name.
-        // Call the static methods to create a lists of names.
+        //call the static method to create a list of names
+
+
+        System.out.println("\n Welcome to the zoo.");
+        //look at our animal names file
+        //call inputHyenaNames()
+
+        Hyena.inputHyenaNames();
+        Bear.inputBearNames();
         Lion.inputLionNames();
         Tiger.inputTigerNames();
-        Bear.inputBearNames();
-        Hyena.inputHyenaNames();
+
+        Hyena.listOut();
+        Bear.listOut();
+        Lion.listOut();
+        Tiger.listOut();
+
+
+       int currentNumOfHyenas = Hyena.getNumOfHyenas();
 
 
 
-        // Open a csv file using the split() method on a string object
-        String path = "C:\\Users\\BE218\\javaDataFiles\\arrivingAnimals.txt";
-        String myFileLine = "";
+        //pop a name from the hyena list
+        String hyenaName = Hyena.popHyenaName();
+        System.out.println("\n The popped hyena name is: " + hyenaName);
+        
+        String bearName = Bear.popBearName();
+        System.out.println("\n The popped bear name is: " + bearName );
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(path));
-            while ((myFileLine = reader.readLine()) != null) {
-                String[] myArray = myFileLine.split(",");
+        String lionName = Lion.popLionName();
+        System.out.println("\n The popped lion name is " + lionName);
 
-                String myStr = myArray[0];
-                System.out.println("\n myStr = " + myStr);
-                myArray = myStr.split(" ");
-                String mySpecies = myArray[4];
-                System.out.println(" Species is: " + mySpecies);
-                System.out.println("\n myStr = " + myStr);
+        String tigerName = Tiger.popTigerName();
+        System.out.println("\n The popped tiger name is " + tigerName);
 
 
-               /*
-                System.out.println(" First element: " + myArray[0]);
-                System.out.println(" Second element: " + myArray[1]);
-                System.out.println(" Third item: " + myArray[2]);
-                System.out.println(" Fourth element: " + myArray[3]);
-                System.out.println(" Fifth item: " + myArray[4]);
-                System.out.println(" Sixth item: " + myArray[5]);
-
-                */
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-
-
-
-
 }
-
