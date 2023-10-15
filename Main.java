@@ -1,10 +1,13 @@
-
-//updated 9/28
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Calendar;
+import java.time.LocalDate;
 
 public class Main {
 
     // Creating the genUniqueID method
-
     private static String genUniqueID(String theSpecies, int numOfSpecies){
         String prefix = "";
         int suffix = numOfSpecies + 1;
@@ -18,12 +21,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //call the static method to create a list of names
+
 
 
         System.out.println("\n Welcome to the zoo.");
         //look at our animal names file
-        //call inputHyenaNames()
+        //call the static method to create a list of names
 
         Hyena.inputHyenaNames();
         Bear.inputBearNames();
@@ -35,23 +38,103 @@ public class Main {
         Lion.listOut();
         Tiger.listOut();
 
+        //open a csv file using the split() method on a string object
 
-       int currentNumOfHyenas = Hyena.getNumOfHyenas();
+        String path = "C:/Users/Makal/OneDrive/Documents/zooProgramFile/arrivingAnimals.txt";
+        String myFileLine= "";
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            int myCounter = 1;
+            while ((myFileLine = reader.readLine()) != null){
+                //the input data from arriving animals should look like this
+                // 4 year old female hyena, born in spring, tan color, 70 pounds, from Friguia Park, Tunisia
+                //create a string array named myArrayOfAnimalData
+
+                String[] myArrayOfAnimalData = myFileLine.split(",");
+
+                String[] myArrayOfGenderSpecies = myArrayOfAnimalData[0].split(" ");
+
+                //output the age, gender and species
+
+                System.out.println("\n age in years: " + myArrayOfGenderSpecies[0]);
+                System.out.println("\n text for age(should be 'year') " + myArrayOfGenderSpecies[1]);
+                System.out.println("\n text for age (should be 'old') " + myArrayOfGenderSpecies[2]);
+                System.out.println("\n gender is " + myArrayOfGenderSpecies[3]);
+                System.out.println("\n species is " + myArrayOfGenderSpecies[4]);
+
+                //code up the birthDate() method
+
+                //get todays date
+                Calendar calendar = Calendar.getInstance();
+                Date today = calendar.getTime();
+
+                LocalDate currentDate = LocalDate.now();
+                int year = currentDate.getYear();
+
+                //print the year
+                System.out.println("Current Year: " + year);
+
+                int animalsYearOfBirthDate = year - Integer.parseInt(myArrayOfGenderSpecies[0]);
+
+                //split the next group of words by a space
+                String[] myArrayOfBirthSeason = myArrayOfAnimalData[1].split(" ");
+
+                String birthSeason = myArrayOfBirthSeason[3];
+                System.out.println("\n birth season = " + birthSeason + "\n\n");
+
+                String myAnimalBD = " ";
+
+                if (birthSeason.contains("string")){
+                    myAnimalBD = "Mar 31, " + animalsYearOfBirthDate;
+
+                }
+
+                System.out.println("\n\n Animal birth date is: " + myAnimalBD + "\n\n");
+
+
+                //subtract 4 years
+                calendar.add(Calendar.YEAR, - Integer.parseInt(myArrayOfGenderSpecies[0]));
+                //get the new date after subtraction
+                Date yearsAgo = calendar.getTime();
+
+                //print the original and new dates
+
+                System.out.println("Today's Date: " + today);
+                System.out.println("Date: " + myArrayOfGenderSpecies[1] + "years ago" + yearsAgo);
+
+                System.out.println("\n Species is " + myArrayOfGenderSpecies[4]);
+                System.out.println("\n Animal Number " + myCounter + "*******");
+                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[0]);
+                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[1]);
+                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[2]);
+                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[3]);
+                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[4]);
+                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[5]);
+
+                //increment the animal counter
+                myCounter++;
 
 
 
-        //pop a name from the hyena list
-        String hyenaName = Hyena.popHyenaName();
-        System.out.println("\n The popped hyena name is: " + hyenaName);
-        
-        String bearName = Bear.popBearName();
-        System.out.println("\n The popped bear name is: " + bearName );
 
-        String lionName = Lion.popLionName();
-        System.out.println("\n The popped lion name is " + lionName);
 
-        String tigerName = Tiger.popTigerName();
-        System.out.println("\n The popped tiger name is " + tigerName);
+            }
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+     //  int currentNumOfHyenas = Hyena.getNumOfHyenas();
+
+
+
+
+
+
+
 
 
     }
