@@ -8,21 +8,42 @@ import java.time.LocalDate;
 public class Main {
 
     // Creating the genUniqueID method
-    private static String genUniqueID(String theSpecies, int numOfSpecies){
+
+
+    public static String genUniqueID(String theSpecies, int numOfSpecies) {
         String prefix = "";
         int suffix = numOfSpecies + 1;
-        if(theSpecies.contains("hyena")){
+        if (theSpecies.contains("hyena")) {
             prefix = "Hy";
+        } else if (theSpecies.contains("lion")) {
+            prefix = "Li";
+
+        } else if (theSpecies.contains("bear")) {
+            prefix = "Be";
+
+        } else if (theSpecies.contains("tiger")) {
+            prefix = "Ti";
+
+        } else {
+            prefix = "XX";
         }
-        return prefix + Integer.valueOf(suffix);
+
+        return prefix + suffix;
 
 
     }
 
+
+
+    // Call the genUniqueID method and store the result in a variable
+    // genUniqueID(theSpecies, numOfSpecies);
+
+    // Print the generated unique ID
+
+
+
+
     public static void main(String[] args) {
-
-
-
 
         System.out.println("\n Welcome to the zoo.");
         //look at our animal names file
@@ -57,11 +78,12 @@ public class Main {
 
                 //output the age, gender and species
 
-                System.out.println("\n age in years: " + myArrayOfGenderSpecies[0]);
+               /* System.out.println("\n age in years: " + myArrayOfGenderSpecies[0]);
                 System.out.println("\n text for age(should be 'year') " + myArrayOfGenderSpecies[1]);
                 System.out.println("\n text for age (should be 'old') " + myArrayOfGenderSpecies[2]);
                 System.out.println("\n gender is " + myArrayOfGenderSpecies[3]);
-                System.out.println("\n species is " + myArrayOfGenderSpecies[4]);
+                System.out.println("\n species is " + myArrayOfGenderSpecies[4]);*/
+                System.out.println("\n" +myArrayOfGenderSpecies[4]+" "+ myArrayOfGenderSpecies[0]+" "+ myArrayOfGenderSpecies[1]+" "+ myArrayOfGenderSpecies[2]+" "+myArrayOfGenderSpecies[3]);
 
                 //code up the birthDate() method
 
@@ -73,7 +95,7 @@ public class Main {
                 int year = currentDate.getYear();
 
                 //print the year
-                System.out.println("Current Year: " + year);
+                System.out.println("\nCurrent Year: " + year);
 
                 int animalsYearOfBirthDate = year - Integer.parseInt(myArrayOfGenderSpecies[0]);
 
@@ -83,12 +105,27 @@ public class Main {
                 String birthSeason = myArrayOfBirthSeason[3];
                 System.out.println("\n birth season = " + birthSeason + "\n\n");
 
-                String myAnimalBD = " ";
 
-                if (birthSeason.contains("string")){
-                    myAnimalBD = "Mar 31, " + animalsYearOfBirthDate;
+            //chat gpt recommendation:
+                int currentYear = LocalDate.now().getYear();
+                int age=0;
+                int yearOfBirth = currentYear - age;
+                String myAnimalBD = "";
 
+                if (birthSeason.contains("spring")) {
+                    myAnimalBD = "Mar 31, " + yearOfBirth;
+                } else if (birthSeason.contains("summer")) {
+                    myAnimalBD = "Jun 30, " + yearOfBirth;
+                } else if (birthSeason.contains("fall")) {
+                    myAnimalBD = "Sep 30, " + yearOfBirth;
+                } else if (birthSeason.contains("winter")) {
+                    myAnimalBD = "Dec 31, " + yearOfBirth;
+                } else {
+                    myAnimalBD = "Unknown";
                 }
+
+
+
 
                 System.out.println("\n\n Animal birth date is: " + myAnimalBD + "\n\n");
 
@@ -101,17 +138,17 @@ public class Main {
                 //print the original and new dates
 
                 System.out.println("Today's Date: " + today);
-                System.out.println("Date: " + myArrayOfGenderSpecies[1] + "years ago" + yearsAgo);
+                System.out.println("Date: " + myArrayOfGenderSpecies[1] + " years ago " + yearsAgo);
 
                 System.out.println("\n Species is " + myArrayOfGenderSpecies[4]);
                 System.out.println("\n Animal Number " + myCounter + "*******");
                 System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[0]);
-                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[1]);
-                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[2]);
-                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[3]);
-                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[4]);
-                System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[5]);
-
+                System.out.println("\n myArrayOFAnimalData[1] is..." + myArrayOfAnimalData[1]);
+                System.out.println("\n myArrayOFAnimalData[2] is..." + myArrayOfAnimalData[2]);
+                System.out.println("\n myArrayOFAnimalData[3] is..." + myArrayOfAnimalData[3]);
+                System.out.println("\n myArrayOFAnimalData[4] is..." + myArrayOfAnimalData[4]);
+                System.out.println("\n myArrayOFAnimalData[5] is..." + myArrayOfAnimalData[5]);
+               
                 //increment the animal counter
                 myCounter++;
 
@@ -126,16 +163,5 @@ public class Main {
             e.printStackTrace();
         }
 
-
-     //  int currentNumOfHyenas = Hyena.getNumOfHyenas();
-
-
-
-
-
-
-
-
-
-    }
+  }
 }
