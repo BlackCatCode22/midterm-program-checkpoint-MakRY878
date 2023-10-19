@@ -138,17 +138,17 @@ public class Main {
                 //print the original and new dates
 
                 System.out.println("Today's Date: " + today);
-                System.out.println("Date: " + myArrayOfGenderSpecies[1] + " years ago " + yearsAgo);
+                System.out.println("Date: " + myArrayOfGenderSpecies[0] + " years ago " + yearsAgo);
 
                 System.out.println("\n Species is " + myArrayOfGenderSpecies[4]);
-                System.out.println("\n Animal Number " + myCounter + "*******");
+                System.out.println("\n Animal Number " + myCounter + " *******");
                 System.out.println("\n myArrayOFAnimalData[0] is..." + myArrayOfAnimalData[0]);
                 System.out.println("\n myArrayOFAnimalData[1] is..." + myArrayOfAnimalData[1]);
                 System.out.println("\n myArrayOFAnimalData[2] is..." + myArrayOfAnimalData[2]);
                 System.out.println("\n myArrayOFAnimalData[3] is..." + myArrayOfAnimalData[3]);
                 System.out.println("\n myArrayOFAnimalData[4] is..." + myArrayOfAnimalData[4]);
                 System.out.println("\n myArrayOFAnimalData[5] is..." + myArrayOfAnimalData[5]);
-               
+
                 //increment the animal counter
                 myCounter++;
 
